@@ -28,7 +28,7 @@ node_templates:
       server:
         image: { get_input: image_id }
         flavor: { get_input: flavor_id }
-      management_network_name: { get_property: [ example_openstack_network, resource_id ] }
+      management_network_name: { get_property: [ example_openstack_private_network, resource_id ] }
     relationships:
       - target: example_openstack_key
         type: cloudify.openstack.server_connected_to_keypair
