@@ -6,7 +6,7 @@ inputs:
     type: boolean
     default: true
 
-  example_openstack_external_network_name:
+  external_network_name:
     type: string
     default: external
 
@@ -17,4 +17,4 @@ node_templates:
     properties:
       openstack_config: { get_input: openstack_configuration }
       use_external_resource: { get_input: use_existing_example_openstack_external_network }
-      resource_id: { get_input: example_openstack_external_network_name }
+      resource_id: { get_input: external_network_name }

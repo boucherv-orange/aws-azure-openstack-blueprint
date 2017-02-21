@@ -8,12 +8,12 @@ inputs:
 
   example_openstack_virtual_machine:
     type: string
-    default: ''
+    default: 'test-val'
 
-  example_openstack_virtual_machine_image_id:
+  image_id:
     type: string
 
-  example_openstack_virtual_machine_flavor_id:
+  flavor_id:
     type: string
 
 node_templates:
@@ -26,13 +26,11 @@ node_templates:
       resource_id: { get_input: example_openstack_virtual_machine }
       install_agent: false
       server:
-        image: { get_input: example_openstack_virtual_machine_image_id }
-        flavor: { get_input: example_openstack_virtual_machine_flavor_id }
+        image: { get_input: image_id }
+        flavor: { get_input: flavor_id }
       management_network_name: { get_property: [ example_openstack_network, resource_id ] }
     relationships:
       - target: example_openstack_key
         type: cloudify.openstack.server_connected_to_keypair
-      - target: example_openstack_network_port
-        type: cloudify.openstack.server_connected_to_port
       - target: example_openstack_private_network_port
         type: cloudify.openstack.server_connected_to_port
